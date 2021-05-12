@@ -2,8 +2,10 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+//Like appsetting.json on .NET Core
 export const environment = {
-  production: false
+  production: false,
+  apiurl: 'https://localhost:44381/api/'
 };
 
 /*
