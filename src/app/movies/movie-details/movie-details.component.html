@@ -1,1 +1,147 @@
-<p>movie-details works!</p>
+<div class="bg-image" style="background-image: url({{detail.movie.backdropUrl}})">
+
+    <div class="row">
+        <div class="col-md-3 offset-2">
+
+            <!-- Movie Card row -->
+            <div>
+                <img src="{{detail.movie.posterUrl}}" class="card-img-top" />
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="row mt-2">
+                <div class="col-12">
+                    <h1 class="text-white">
+                        {{detail.movie.title}}
+                    </h1>
+                    <small class="text-muted"> {{detail.movie.tagline}} </small>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-4 text-secondary font-weight-bold mt-2">
+                    {{detail.movie.releaseDate}} m | {{detail.movie.releaseDate | date: 'shortDate'}}
+                </div>
+                <div class="col-8" *ngFor="let genre of detail.genres">
+                        <a class="badge badge-pill badge-dark ml-1" [routerLink]="[ '/genre/', genre.id ]">
+                            {{genre.name}}
+                        </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4 mt-3">
+                    <h4>
+                        <span class="badge badge-warning">
+                            {{detail.movie.rating}}
+                        </span>
+                    </h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-light mt-2">
+                    {{detail.movie.overview}}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-2 mt-4 offset-1">
+            <ul class="list-group">
+                <li class="list-group-item">
+
+
+                </li>
+                <li class="list-group-item">
+                    <button type="button"
+                            class="btn btn-outline-light btn-lg btn-block btn-sm">
+                        <i class="far fa-edit mr-1"></i>
+                        REVIEW
+                    </button>
+                </li>
+                <li class="list-group-item">
+                    <button type="button"
+                            class="btn btn-outline-light btn-lg btn-block btn-sm">
+                        <i class="fas fa-play mr-1"></i> TRAILER
+                    </button>
+                </li>
+
+                <li class="list-group-item">
+                    <a class="btn btn-light btn-lg btn-block btn-sm">
+                        BUY {{detail.movie.price}}
+                    </a>
+
+                    <a class="btn btn-light btn-lg btn-block btn-sm">
+                        WATCH MOVIE
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row mt-4">
+    <div class="col-4 moviefacts">
+        <h5>MOVIE FACTS</h5>
+        <hr>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <i class="far fa-calendar-alt mr-2"></i>{{detail.movie.releaseDate}}
+                <span class="badge badge-pill badge-dark">{{detail.movie.releaseDate | date: 'shortDate'}}</span>
+            </li>
+
+            <li class="list-group-item">
+                <i class="fas fa-hourglass-half mr-2"></i>Run Time
+                <span class="badge badge-pill badge-dark">{{detail.movie.runTime}} m</span>
+            </li>
+            <li class="list-group-item">
+                <i class="far fa-money-bill-alt"></i> Box Office
+                <span class="badge badge-pill badge-pill badge-dark">
+                    {{detail.movie.revenue}}
+                </span>
+            </li>
+
+            <li class="list-group-item">
+                <i class="fas fa-dollar-sign mr-2"></i> Budget
+                <span class="badge badge-pill badge-dark">
+                    {{detail.movie.budget}}
+                </span>
+            </li>
+
+            <li class="list-group-item">
+                <i class="fab fa-imdb"></i>
+
+                <a href="{{detail.movie.imdbUrl}}"
+                   class="text-dark ml-3"
+                   target="_blank">
+                    <i class="fas fa-share-square mr-2"></i>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="col-4 offset-1">
+        <h5>CAST</h5>
+
+        <table class="table">
+
+            <tbody>
+                    <tr *ngFor="let cast of detail.casts">
+                        <td>
+                            <img src="{{cast.profilePath}}"
+                                 class="rounded-circle cast-small-img"
+                                 alt="{{cast.name}}" />
+                        </td>
+                        <td> {{cast.name}} </td>
+                        <td> {{cast.character}}</td>
+                    </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
