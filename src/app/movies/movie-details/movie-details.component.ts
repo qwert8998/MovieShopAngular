@@ -13,7 +13,7 @@ export class MovieDetailsComponent implements OnInit {
   movieId: number | undefined;
   detail!: MovieDetail;
 
-  constructor(private movieService: MovieService,private route: ActivatedRoute, private router: Router) { }
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(

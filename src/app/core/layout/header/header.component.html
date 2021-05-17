@@ -20,20 +20,23 @@
                 </div>
             </li>
 
-            <li class="nav-link">
+            <li class="nav-link" *ngIf="!isAuth">
                 <a [routerLink]="[ '/login']">Login</a>
 
                 <!-- <a class="btn btn-outline-primary"> Login </a> -->
                 <!-- Ctrl + / -->
             </li>
 
-            <li class="nav-link">
+            <li class="nav-link" *ngIf="!isAuth">
                 <a [routerLink]="[ '/register']">Register</a>
-                
+
                 <!-- <a class="btn btn-outline-primary"> Register </a> -->
             </li>
-        </ul>
 
+            <li *ngIf="isAuth">
+                    <a class="btn btn-outline-primary">{{user.given_name}} {{user.family_name}}</a>
+            </li>
+        </ul>
 
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
