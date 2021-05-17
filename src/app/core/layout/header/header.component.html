@@ -34,7 +34,11 @@
             </li>
 
             <li *ngIf="isAuth">
-                    <a class="btn btn-outline-primary">{{user.given_name}} {{user.family_name}}</a>
+                    <a class="nav-link">{{user.given_name}} {{user.family_name}}</a>
+            </li>
+
+            <li *ngIf="isAuth">
+                <a class="btn btn-outline-primary" (click)="logout()">Logout</a>
             </li>
         </ul>
 

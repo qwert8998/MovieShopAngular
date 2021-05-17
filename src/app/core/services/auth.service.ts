@@ -5,6 +5,7 @@ import { Login } from 'src/app/shared/models/login';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/shared/models/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class AuthService {
 
   private user!: User;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   //take um/pw from login component and post it to API service that will post to API
   login(userlogin: Login){
@@ -61,5 +62,6 @@ export class AuthService {
     localStorage.removeItem('token');
     this.currentUserSubject.next({} as User);
     this.isAuthSubject.next(false);
+    this.router.navigate(['/login']);
   }
 }
